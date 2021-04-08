@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
+        <activity android:name=".Test.VideoPlayActivity"></activity>
+        <activity android:name=".Test.RecordTestActivity"></activity>
     </application>
 
 </manifest>
