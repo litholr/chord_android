@@ -24,7 +24,7 @@ import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 
 public class LoginActivity extends AppCompatActivity {
-
+    String TAG = "LoginActivity";
 
     private final SessionCallback sessionCallback = new SessionCallback();
     Session session;
@@ -42,8 +42,13 @@ public class LoginActivity extends AppCompatActivity {
         btn_custom_login = (Button) findViewById(R.id.btn_custom_login);
         btn_custom_login_out = (Button) findViewById(R.id.btn_custom_login_out);
         btnBack = (Button) findViewById(R.id.btnBack);
-        session = Session.getCurrentSession();
-        session.addCallback(sessionCallback);
+        try {
+            session = Session.getCurrentSession();
+            session.addCallback(sessionCallback);
+        } catch (IllegalStateException | NullPointerException e) {
+            Log.e(TAG, e.toString());
+        }
+
 
         btn_custom_login.setOnClickListener(new View.OnClickListener() {
             @Override
